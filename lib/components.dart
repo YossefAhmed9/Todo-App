@@ -87,7 +87,8 @@ Widget defaultButton(
   final Function,
   final String text,
   final Color textColor,
-) => Container(
+    final double fontSize,
+    ) => Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
@@ -99,6 +100,7 @@ Widget defaultButton(
           text,
           style: TextStyle(
             color: textColor,
+            fontSize: fontSize
           ),
         ),
       ),

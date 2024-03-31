@@ -29,7 +29,7 @@ class ArchivedTasks extends StatelessWidget {
                       radius: 40,
                       child: Text(
                         '${model['time']} ',
-                        style: TextStyle(fontWeight: FontWeight.w800),
+                        style: const TextStyle(fontWeight: FontWeight.w800),
                       ),
                     ),
                   ),
@@ -40,14 +40,14 @@ class ArchivedTasks extends StatelessWidget {
                       children: [
                         Text(
                           '${model['title']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.w500,
                               color: Colors.lightGreenAccent),
                         ),
                         Text(
                           '${model['date']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: Colors.pinkAccent),
@@ -64,7 +64,7 @@ class ArchivedTasks extends StatelessWidget {
                             id: model['id'],
                           );
                         },
-                        icon: Icon(Icons.check_circle),
+                        icon: const Icon(Icons.check_circle),
                         color: Colors.green,
                       ),
                       IconButton(
@@ -74,7 +74,7 @@ class ArchivedTasks extends StatelessWidget {
                             id: model['id'],
                           );
                         },
-                        icon: Icon(Icons.archive),
+                        icon: const Icon(Icons.archive),
                         color: Colors.red[700],
                       ),
                     ],
@@ -84,7 +84,7 @@ class ArchivedTasks extends StatelessWidget {
             );
 
         return ConditionalBuilder(
-          condition: tasks.length > 0,
+          condition: tasks.isNotEmpty,
           builder: (context) => ListView.separated(
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
@@ -96,23 +96,26 @@ class ArchivedTasks extends StatelessWidget {
             )),
             itemCount: tasks.length,
           ),
-          fallback: (context) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.menu_outlined,
-                  size: 100,
-                  color: Colors.white,
-                ),
-                Text(
-                  'No Archived Tasks!',
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 23,
-                      fontWeight: FontWeight.w700),
-                )
-              ],
+          fallback: (context) =>  Center(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.menu_outlined,
+                    size: 100,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    'No Archived Tasks!',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: MediaQuery.of(context).size.width * 0.07,
+                        fontWeight: FontWeight.w700),
+                  )
+                ],
+              ),
             ),
           ),
         );

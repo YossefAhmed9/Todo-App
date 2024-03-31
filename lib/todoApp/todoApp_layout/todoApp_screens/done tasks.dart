@@ -29,7 +29,7 @@ class DoneTasks extends StatelessWidget {
                       radius: 40,
                       child: Text(
                         '${model['time']} ',
-                        style: TextStyle(fontWeight: FontWeight.w800),
+                        style: const TextStyle(fontWeight: FontWeight.w800),
                       ),
                     ),
                   ),
@@ -40,14 +40,14 @@ class DoneTasks extends StatelessWidget {
                       children: [
                         Text(
                           '${model['title']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.w500,
                               color: Colors.lightGreenAccent),
                         ),
                         Text(
                           '${model['date']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: Colors.pinkAccent),
@@ -64,7 +64,7 @@ class DoneTasks extends StatelessWidget {
                             id: model['id'],
                           );
                         },
-                        icon: Icon(Icons.check_circle),
+                        icon: const Icon(Icons.check_circle),
                         color: Colors.green,
                       ),
                       IconButton(
@@ -74,7 +74,7 @@ class DoneTasks extends StatelessWidget {
                             id: model['id'],
                           );
                         },
-                        icon: Icon(Icons.archive),
+                        icon: const Icon(Icons.archive),
                         color: Colors.red[700],
                       ),
                     ],
@@ -96,20 +96,23 @@ class DoneTasks extends StatelessWidget {
             )),
             itemCount: tasks.length,
           ),
-          fallback: (context) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.menu_outlined, size: 100, color: Colors.white),
-                Text(
-                  'All tasks are done,'
-                  'Now create some and start working',
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 23,
-                      fontWeight: FontWeight.w700),
-                )
-              ],
+          fallback: (context) =>  Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.menu_outlined, size: 100, color: Colors.white),
+                  Text(
+                    'All tasks are done,'
+                    'Now create some and start working',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: MediaQuery.of(context).size.width * 0.050,
+                        fontWeight: FontWeight.w700),
+                  )
+                ],
+              ),
             ),
           ),
         );

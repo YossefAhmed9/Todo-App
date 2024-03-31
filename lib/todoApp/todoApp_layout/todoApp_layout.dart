@@ -49,13 +49,13 @@ class HomeScreen extends StatelessWidget {
               appBar: AppBar(
                 title: Text(
                   cubit.titles[cubit.currentIndex],
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
                 ),
               ),
               bottomNavigationBar: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 currentIndex: AppCubit.get(context).currentIndex,
-                items: [
+                items: const [
                   BottomNavigationBarItem(
                       icon: Icon(Icons.menu), label: 'New Tasks'),
                   BottomNavigationBarItem(
@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                 builder: (context) =>
                     AppCubit.get(context).screen[cubit.currentIndex],
                 fallback: (context) {
-                  return Center(child: (CircularProgressIndicator()));
+                  return const Center(child: (CircularProgressIndicator()));
                 },
               ),
               floatingActionButton: FloatingActionButton(
@@ -83,11 +83,11 @@ class HomeScreen extends StatelessWidget {
                     scaffoldKey.currentState
                         ?.showBottomSheet((context) {
                           return Container(
-                            decoration: BoxDecoration(
-                                color: Colors.brown[200],
+                            decoration: const BoxDecoration(
+                                color: Color(0XFF750404),
                                 borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    topRight: Radius.circular(20))),
+                                    topLeft: Radius.circular(25),
+                                    topRight: Radius.circular(25))),
                             child: Form(
                               key: formKey,
                               child: Column(
@@ -97,6 +97,7 @@ class HomeScreen extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Container(
                                       decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(35),
                                         color: Colors.grey[300],
                                       ),
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -108,8 +109,8 @@ class HomeScreen extends StatelessWidget {
                                           (value) => print(value),
                                           () {},
                                           'Enter task name',
-                                          OutlineInputBorder(),
-                                          Icon(Icons.task_alt),
+                                          const OutlineInputBorder(),
+                                          const Icon(Icons.task_alt),
                                           (String? value) {
                                         if (value!.isEmpty) {
                                           return 'Enter task title';
@@ -122,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
 
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 20,
                                   ),
 
@@ -133,6 +134,8 @@ class HomeScreen extends StatelessWidget {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                             decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(35),
+
                                               color: Colors.grey[300],
                                             ),
                                             clipBehavior:
@@ -168,8 +171,8 @@ class HomeScreen extends StatelessWidget {
                                                   });
                                                 },
                                                 'task date',
-                                                OutlineInputBorder(),
-                                                Icon(Icons
+                                                const OutlineInputBorder(),
+                                                const Icon(Icons
                                                     .calendar_month_rounded),
                                                 (String? value) {
                                                   if (value!.isEmpty) {
@@ -181,7 +184,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
                                       Expanded(
@@ -189,6 +192,7 @@ class HomeScreen extends StatelessWidget {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                             decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(35),
                                               color: Colors.grey[300],
                                             ),
                                             clipBehavior:
@@ -219,8 +223,8 @@ class HomeScreen extends StatelessWidget {
                                                   });
                                                 },
                                                 'task time',
-                                                OutlineInputBorder(),
-                                                Icon(Icons.timer_sharp),
+                                                const OutlineInputBorder(),
+                                                const Icon(Icons.timer_sharp),
                                                 (String? value) {
                                                   if (value!.isEmpty) {
                                                     return 'Enter task time';
@@ -234,14 +238,14 @@ class HomeScreen extends StatelessWidget {
                                     ],
                                   ),
 
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-
                                   //Default Button
-                                  Container(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius:BorderRadius.circular(30)
+                                      ),
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
                                       child: defaultButton(100, 50, Colors.red,
                                           () async {
                                         if (formKey.currentState!.validate()) {
@@ -266,7 +270,7 @@ class HomeScreen extends StatelessWidget {
                                         }
 
                                         return null;
-                                      }, 'Done', Colors.white),
+                                      }, 'Done', Colors.white,18),
                                     ),
                                   ),
                                 ],
