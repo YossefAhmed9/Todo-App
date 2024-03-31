@@ -103,11 +103,11 @@ class NewTasks extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.menu_outlined, size: 100, color: Colors.white),
+                  const Icon(Icons.menu_outlined, size: 100, color: Colors.pink),
                   Text(
                     'Enter new tasks and start working!',
                     style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.pink,
                         fontSize: MediaQuery.of(context).size.width * 0.055,
                         fontWeight: FontWeight.w700),
                   )

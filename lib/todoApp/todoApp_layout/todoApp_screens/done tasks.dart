@@ -102,12 +102,12 @@ class DoneTasks extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.menu_outlined, size: 100, color: Colors.white),
+                  const Icon(Icons.menu_outlined, size: 100, color: Colors.pink),
                   Text(
                     'All tasks are done,'
                     'Now create some and start working',
                     style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.pink,
                         fontSize: MediaQuery.of(context).size.width * 0.050,
                         fontWeight: FontWeight.w700),
                   )

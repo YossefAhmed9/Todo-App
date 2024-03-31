@@ -102,15 +102,15 @@ class ArchivedTasks extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.menu_outlined,
                     size: 100,
-                    color: Colors.white,
+                    color: Colors.pink,
                   ),
                   Text(
                     'No Archived Tasks!',
                     style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.pink,
                         fontSize: MediaQuery.of(context).size.width * 0.07,
                         fontWeight: FontWeight.w700),
                   )
