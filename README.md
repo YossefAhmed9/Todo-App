@@ -28,3 +28,12 @@ Following Google's Material Design principles, the app boasts a clean and modern
 
 5- Local Data Persistence:
 Task data is securely stored locally, providing a seamless offline experience and quick access to your to-do list whenever you need it.
+
+
+
+
+
+
+![Screenshot_٢٠٢٤٠٤١٤-٢٠٣٧٠٥](https://github.com/YossefAhmed9/Todo-App/assets/78279622/f253aa64-daa9-4648-adce-c29e7cc1b773)
+![Screenshot_٢٠٢٤٠٤١٤-٢٠٣٧٠١](https://github.com/YossefAhmed9/Todo-App/assets/78279622/8fbab835-3ba8-4b69-8c8d-508f15213868)
+
