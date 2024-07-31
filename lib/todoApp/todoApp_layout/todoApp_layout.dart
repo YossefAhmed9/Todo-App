@@ -3,21 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import '../../components.dart';
+import '../../widgets/components.dart';
 import '../../cubit/TodoCubit.dart';
 import '../../cubit/states.dart';
+import '../../widgets/floating_icon_button.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  var TaskTitleController = TextEditingController();
-  var timeController = TextEditingController();
-  var dateController = TextEditingController();
+  TextEditingController TaskTitleController = TextEditingController();
+  TextEditingController timeController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
 
-  var scaffoldKey = GlobalKey<ScaffoldState>();
-  var formKey = GlobalKey<FormState>();
-  var timekey = GlobalKey<FormState>();
-  var dateKey = GlobalKey<FormState>();
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> timekey = GlobalKey<FormState>();
+  GlobalKey<FormState> dateKey = GlobalKey<FormState>();
 
 //DateTime date=DateTime.parse;
   String formattedDate = DateFormat.yMMMEd().format(DateTime.now());
@@ -76,226 +77,11 @@ class HomeScreen extends StatelessWidget {
                   return const Center(child: (CircularProgressIndicator()));
                 },
               ),
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  if (cubit.isBottomSheetShown) {
-                  } else {
-                    scaffoldKey.currentState
-                        ?.showBottomSheet((context) {
-                          return Container(
-                            decoration: const BoxDecoration(
-                                color: Color(0XFF750404),
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(25),
-                                    topRight: Radius.circular(25))),
-                            child: Form(
-                              key: formKey,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(35),
-                                        color: Colors.grey[300],
-                                      ),
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      child: defaultTextFormField(
-                                          // formKey,
-                                          TextInputType.text,
-                                          TaskTitleController,
-                                          (value) => print(value),
-                                          (value) => print(value),
-                                          () {},
-                                          'Enter task name',
-                                          const OutlineInputBorder(),
-                                          const Icon(Icons.task_alt),
-                                          (String? value) {
-                                        if (value!.isEmpty) {
-                                          return 'Enter task title';
-                                        } else {
-                                          TaskTitleController.text =
-                                              value.toString();
-                                          return null;
-                                        }
-                                      }),
-                                    ),
-                                  ),
-
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(35),
-
-                                              color: Colors.grey[300],
-                                            ),
-                                            clipBehavior:
-                                                Clip.antiAliasWithSaveLayer,
-                                            child: defaultTextFormField(
-                                                // dateKey,
-                                                TextInputType.none,
-                                                dateController,
-                                                (value) {
-                                                  print(value);
-                                                },
-                                                (value) {
-                                                  print(value);
-                                                },
-                                                () {
-                                                  showDatePicker(
-                                                    context: context,
-                                                    initialDate: DateTime.now(),
-                                                    firstDate:
-                                                        DateTime(2000, 1, 1),
-                                                    lastDate:
-                                                        DateTime(2040, 12, 31),
-                                                  ).then((value) {
-                                                    dateController.text =
-                                                        DateFormat('dd/MM/yyyy')
-                                                            .format(value!)
-                                                            .toString();
-                                                    print(dateController);
-                                                  });
-                                                  ((value) {
-                                                    print(
-                                                        value?.format(context));
-                                                  });
-                                                },
-                                                'task date',
-                                                const OutlineInputBorder(),
-                                                const Icon(Icons
-                                                    .calendar_month_rounded),
-                                                (String? value) {
-                                                  if (value!.isEmpty) {
-                                                    return 'Enter task date';
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                }),
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(35),
-                                              color: Colors.grey[300],
-                                            ),
-                                            clipBehavior:
-                                                Clip.antiAliasWithSaveLayer,
-                                            child: defaultTextFormField(
-                                                // timekey,
-                                                TextInputType.none,
-                                                timeController,
-                                                (value) {
-                                                  print(value);
-                                                },
-                                                (value) {
-                                                  print(value);
-                                                },
-                                                () {
-                                                  showTimePicker(
-                                                          context: context,
-                                                          initialTime:
-                                                              TimeOfDay.now())
-                                                      .then((value) {
-                                                    print(value
-                                                        ?.format(context)
-                                                        .toString());
-                                                    timeController.text = (value
-                                                        ?.format(context)
-                                                        .toString())!;
-                                                    print(timeController);
-                                                  });
-                                                },
-                                                'task time',
-                                                const OutlineInputBorder(),
-                                                const Icon(Icons.timer_sharp),
-                                                (String? value) {
-                                                  if (value!.isEmpty) {
-                                                    return 'Enter task time';
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                }),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-
-                                  //Default Button
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:BorderRadius.circular(30)
-                                      ),
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      child: defaultButton(100, 50, Colors.red,
-                                          () async {
-                                        if (formKey.currentState!.validate()) {
-                                          try {
-                                            await cubit.insertToDatabase(
-                                              title: TaskTitleController.text,
-                                              date: dateController.text,
-                                              time: timeController.text,
-                                            );
-                                          } catch (error) {
-                                            print(
-                                                'error is $error.runtimeType');
-                                          }
-
-                                          print('title= $TaskTitleController'
-                                              .toString());
-                                          print('title= $timeController'
-                                              .toString());
-                                          print('title= $dateController'
-                                              .toString());
-                                          return 'Enter task name';
-                                        }
-
-                                        return null;
-                                      }, 'Done', Colors.white,18),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        })
-                        .closed
-                        .then((value) {
-                          if (cubit.isBottomSheetShown) {
-                          } else {}
-                        });
-                  }
-                },
-                child: cubit.fabIcon,
-              ),
+              floatingActionButton:FloatingIconButton()
             );
           },
         ));
   }
 
-/*
-*
-*   setState(() {
-              floatButton = Icon(Icons.edit);
-            });
-* */
+
 }
